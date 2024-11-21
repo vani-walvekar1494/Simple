@@ -22,6 +22,7 @@ jobs:
     - name: Set up a unique tag for our docker image
       id: tag
       run: echo "tag=$(date +%s)" >> $GITHUB_ENV
+      run: echo env.tag
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USERNAME}}/simple-docker-hub:${{ env.tag }}
